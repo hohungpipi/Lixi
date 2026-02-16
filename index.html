@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng Năm Mới 2026 🧧</title>
+    <link rel="icon" href="https://fav.farm/🧧" />
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            /* Sử dụng link ảnh bạn đã gửi để tránh lỗi đường dẫn cục bộ */
+            background-image: url('../hinhnen.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Lớp phủ để làm nổi bật khung nội dung */
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.15); /* Hiệu ứng kính mờ (Glassmorphism) */
+            padding: 40px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            text-align: center;
+            color: white;
+            max-width: 500px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+            color: #fff;
+        }
+
+        #greeting-text {
+            font-size: 1.2rem;
+            min-height: 1.5em;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .btn-lixi {
+            background: linear-gradient(45deg, #ff4e50, #f9d423);
+            color: #b71c1c;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 78, 80, 0.4);
+        }
+
+        .btn-lixi:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(255, 78, 80, 0.6);
+        }
+
+        /* Modal Xin Lì Xì */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            color: #333;
+            width: 300px;
+            animation: popIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .qr-code { width: 100%; border-radius: 10px; margin: 15px 0; }
+        .close-btn { cursor: pointer; color: #aaa; float: right; font-size: 24px; }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+
+    <div class="main-content">
+        <h1>Chúc Mừng Năm Mới 2026</h1>
+        <p id="greeting-text">Chúc bạn vạn sự như ý!</p>
+        <button class="btn-lixi" onclick="openModal()">Nhận lì xì ngay 💵</button>
+    </div>
+
+    <div id="lixiModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 style="color: #d32f2f;">Quét mã để có lì xì</h2>
+            <img src="../qrlixi.jpg" QR Code" class="qr-code"> 
+            <!-- để QR -->
+        </div>
+    </div>
+    <audio src="../nhacnen.mp3"autoplay loop>    </audio>
+    <script>
+        // Danh sách lời chúc tự động đổi như video
+        const greetings = [
+            "Chúc bạn một năm mới thật rực rỡ! ✨",
+            "Mọi dự định đều thành công rực rỡ! 🚀",
+            "Gia đình ấm no, vạn sự như ý! 🧧",
+            "Trái tim yêu nồng say, đời luôn gặp may! ❤️"
+        ];
+
+        let i = 0;
+        const textElem = document.getElementById('greeting-text');
+
+        setInterval(() => {
+            textElem.style.opacity = 0;
+            setTimeout(() => {
+                i = (i + 1) % greetings.length;
+                textElem.innerText = greetings[i];
+                textElem.style.opacity = 1;
+            }, 500);
+        }, 3000);
+
+        // Hàm mở/đóng Modal
+        function openModal() { document.getElementById('lixiModal').style.display = 'flex'; }
+        function closeModal() { document.getElementById('lixiModal').style.display = 'none'; }
+        
+        // Đóng khi bấm ra ngoài
+        window.onclick = function(event) {
+            let modal = document.getElementById('lixiModal');
+            if (event.target == modal) { closeModal(); }
+        }
+    </script>
+</body>
+</html>
